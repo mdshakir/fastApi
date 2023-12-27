@@ -13,8 +13,10 @@ This is a FastAPI application with SQLite database setup.
    cd your-fastapi-app
 
    **build the applicaiton Repository**
+   ```bash
 2. docker build -t your-fastapi-app .
 
    **Run the application**
+   ```bash
 3. docker run -p 8000:80 your-fastapi-app
 
