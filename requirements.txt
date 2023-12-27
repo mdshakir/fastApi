@@ -1,0 +1,7 @@
+fastapi==0.106.0
+python-multipart==0.0.6
+nltk==3.6.1
+pydantic==2.5.3
+PyJWT==2.8.0
+PyJWT==2.8.0
+uvicorn==0.25.0
