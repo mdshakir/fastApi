@@ -10,8 +10,6 @@ Created on Sun Dec 24 14:58:24 2023
 from typing import Optional,Dict,Union
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import FastAPI, UploadFile,Depends,HTTPException,Request,Header,Path,Form
-
-from pydantic import BaseModel
 import uvicorn
 import string
 import nltk
@@ -22,6 +20,7 @@ import sqlite3
 from uuid import uuid4
 import jwt
 import json
+from model import UserResponse,CreateUser
 
 nltk.download('punkt')
 ALLOWED_TEXT_FILE_EXTENSIONS = {".txt"}
@@ -30,13 +29,7 @@ SECRET_KEY = "1234"
 ALGORITHM = "HS256"
 
 
-class CreateUser(BaseModel):
- username: str
 
-class UserResponse(BaseModel):
-    username: str
-    user_id: str
-    jwt: str
     
     
 def create_jwt(data: dict) -> str:
