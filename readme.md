@@ -28,7 +28,7 @@ This is a FastAPI application with SQLite database setup.
 
 - This API provides endpoints for user registration, file uploads, word count analysis, and user statistics retrieval. In this application I have used sqlite database to store the user information. In this application there are four endpoints. The description of each endpoints are as follows: 
 
-1.User Registration
+1.	User Registration
 	
 	Endpoint: POST /create_user
 
@@ -50,6 +50,59 @@ Output:
 
 This endpoints creates a new user and provides a jwt token which will be used further to access the rest of the endpoints. 
 
+
+2.	File Upload
+
+Endpoint: POST /upload_file
+
+Authorization: Requires a valid JWT token in the Authorization header.
+
+Input:
+
+Multipart form data containing a text file.
+Output:
+
+	JSON
+	{
+  		"file_id": "unique_file_id",
+  		"word1": 10,
+  		"word2": 5,
+  		"word3": 2,  // ... and so on for each word and its count
+	}
+
+3. 	Get User Statistics
+
+Endpoint: GET /get_user_stats
+
+Authorization: Requires a valid JWT token in the Authorization header.
+
+Output:
+
+	JSON
+	{
+  		"total_files_uploaded": 5,
+  		"total_words": 1000
+	}
+
+4.	Get Word Count for a File
+
+Endpoint: GET /get_count/{file_id}
+
+Authorization: Requires a valid JWT token in the Authorization header.
+
+Output:
+
+	JSON
+	{
+  	"word1": 10,
+  	"word2": 5,
+  	"word3": 2,  // ... and so on for each word and its count
+	}
+
+#Additional Information
+	Dependencies: FastAPI, uvicorn, python-multipart, JWT, SQLite, uuid, nltk
+	Database: SQLite (fileUpload.db)
+	Error Handling: HTTPException for various error scenarios
 
 
 
