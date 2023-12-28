@@ -95,7 +95,7 @@ def test_upload_file_unsupported_file_type(monkeypatch,client_with_db):
     # Create a test user
     with monkeypatch.context() as m:
         m.setattr(main, "get_db_conn", test_db)
-    user_response = client.post("/create_user", json={"username": "test_user73"})
+    user_response = client.post("/create_user", json={"username": "test_user7"})
     jwt_token = user_response.json()["jwt"]
     assert user_response.status_code == 200
     file_path = "Take Home Assignment.pdf"
