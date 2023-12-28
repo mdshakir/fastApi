@@ -26,12 +26,12 @@ This is a FastAPI application with SQLite database setup.
 
 ## About the Application
 
-- This API provides endpoints for user registration, file uploads, word count analysis, and user statistics retrieval. In this application I have used sqlite database to store the user information. In this application there are four endpoints. The description of each endpoints are as follows: 
+- This API provides endpoints for user registration, file uploads, word count analysis, and user statistics retrieval. In this application, SQLite database is used to store user information. There are four endpoints, and here is a description of each:
 
 1.	**User Registration**
+	
+-Endpoint: POST /create_user
 	```bash
-	Endpoint: POST /create_user
-
 	Input:
 
 	JSON
@@ -39,8 +39,8 @@ This is a FastAPI application with SQLite database setup.
   		"username": "your_username"
 	}
 
-	Output:
-
+	-Output:
+	```bash
 	JSON
 	{
   		"username": "your_username",
@@ -87,7 +87,7 @@ This endpoints creates a new user and provides a jwt token which will be used fu
 	}
 
 4.	**Get Word Count for a File**
-	
+	```bash
 
 	Endpoint: GET /get_count/{file_id}
 
