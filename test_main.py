@@ -6,7 +6,7 @@ Created on Wed Dec 27 11:29:18 2023
 """
 
 from fastapi.testclient import TestClient
-from main import app,create_user,create_table
+from main import app,create_table
 from uuid import uuid4
 import sqlite3
 import pytest
