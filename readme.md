@@ -103,6 +103,44 @@ In this endpoint only text files are allowed. This endpoint also checks if file 
 		}
 This endpoint validates the user and checks if the file belong to the user or not. Whether the file is present or not. 
 
+## Test Suite for Word Counting Application
+-	Description:
+
+This test suite validates the functionality of a FastAPI application that enables users to:
+
+-	Create accounts
+-	Upload text files
+-	Retrieve word counts for uploaded files
+-	View personal statistics (total files uploaded and total words processed)
+
+-	Prerequisites:
+Python 3.7 or later
+SQLite3
+Dependencies listed in requirements_test.txt (install using pip install -r requirements_test.txt)
+
+Running Tests:
+
+Activate your virtual environment (if applicable).
+Install dependencies: pip install -r requirements.txt
+Execute tests: pytest
+
+Test Coverage:
+
+User creation (successful and duplicate username scenarios)
+File uploads (successful, unsupported file types, empty files)
+User statistics retrieval (successful and invalid token scenarios)
+Word count retrieval (successful and invalid file scenarios)
+Structure:
+
+test_api.py: Contains the test suite
+requirements.txt: Lists project dependencies
+main.py: The main application file (referenced in tests, but not included in this directory)
+Additional Notes:
+
+Tests utilize an in-memory SQLite database for isolation.
+The create_table function (presumably defined in main.py) is required for test setup.
+Consider expanding test coverage to include more edge cases and potential error scenarios.
+
 ## 	Additional Information
 -	Dependencies: FastAPI, uvicorn, python-multipart, JWT, SQLite, uuid, nltk
 -	Database: SQLite (fileUpload.db)
