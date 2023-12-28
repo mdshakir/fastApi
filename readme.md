@@ -41,12 +41,12 @@ This is a FastAPI application with SQLite database setup.
 
 -	Output:
 	
-	JSON
-	{
-  		"username": "your_username",
-  		"user_id": "unique_user_id",
-  		"jwt": "JWT_token"
-	}
+		JSON
+		{
+  			"username": "your_username",
+  			"user_id": "unique_user_id",
+  			"jwt": "JWT_token"
+		}
 
 This endpoints creates a new user and provides a jwt token which will be used further to access the rest of the endpoints. 
 
