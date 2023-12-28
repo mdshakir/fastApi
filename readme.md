@@ -24,3 +24,32 @@ This is a FastAPI application with SQLite database setup.
      ```bash
      docker run -p 8000:80 your-fastapi-app
 
+## About the Application
+
+- This API provides endpoints for user registration, file uploads, word count analysis, and user statistics retrieval. In this application I have used sqlite database to store the user information. In this application there are four endpoints. The description of each endpoints are as follows: 
+
+1.User Registration
+	
+	Endpoint: POST /create_user
+
+Input:
+
+JSON
+{
+  "username": "your_username"
+}
+
+Output:
+
+JSON
+{
+  "username": "your_username",
+  "user_id": "unique_user_id",
+  "jwt": "JWT_token"
+}
+
+This endpoints creates a new user and provides a jwt token which will be used further to access the rest of the endpoints. 
+
+
+
+
