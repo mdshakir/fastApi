@@ -54,9 +54,20 @@ def create_connection():
  connection = sqlite3.connect("fileUpload.db")
  return connection
 
-
-def create_table():
-     connection = create_connection()
+def clean_db(connection):
+     cursor = connection.cursor()
+     cursor.execute("""
+     Drop Table users
+     
+     """) 
+     cursor.execute("""
+     Drop Table files
+     
+     """) 
+    
+def create_table(connection):
+     #print("Creating table")
+     #connection = create_connection()
      cursor = connection.cursor()
      cursor.execute("""
      CREATE TABLE IF NOT EXISTS users (
@@ -75,7 +86,7 @@ def create_table():
                 )
             """)
      connection.commit()
-     connection.close() 
+     #connection.close() 
  
 def create_user(user: UserResponse,connection):
  connection.execute("INSERT INTO users (username, user_id) VALUES (?, ?)", (user.username, user.user_id))
@@ -188,27 +199,26 @@ def clean_and_count_words(text: str) -> Dict[str, int]:
     return word_counts,total_words
 
 
-class Item(BaseModel):
-    name: str
-    description: Optional[str] = None
-    price: float
-    tax: Optional[float] = None
 
 app = FastAPI()
-create_table()
+db=create_connection()
+clean_db(db)
+create_table(db)
+
+
+
 
 
 @app.post("/create_user", response_model=UserResponse)
-def createUser(user: str,db = Depends(get_db_conn)):
-    if username_exists(user, db):
+def createUser(user: CreateUser,db = Depends(get_db_conn)):
+    if username_exists(user.username, db):
         raise HTTPException(status_code=400, detail="Username already exists")
-
     user_id = str(uuid4())
     # Create a JSON Web Token
     jwt_payload = {"sub": user_id}
     jwt_token = create_jwt(jwt_payload)
-    create_user( UserResponse(username=user, user_id=user_id, jwt=jwt_token),db)    
-    return UserResponse(username=user, user_id=user_id, jwt=jwt_token)
+    create_user( UserResponse(username=user.username, user_id=user_id, jwt=jwt_token),db)    
+    return UserResponse(username=user.username, user_id=user_id, jwt=jwt_token)
 
 
 
@@ -222,9 +232,24 @@ def create_upload_file(file: UploadFile,  user: str = Depends(get_current_user_a
     if not (file.content_type.startswith("text/") or any(file.filename.endswith(ext) for ext in ALLOWED_TEXT_FILE_EXTENSIONS)):
         raise HTTPException(status_code=415, detail="Unsupported Media Type: Only text files are allowed")
 
+    contents=""
+    try:        
+        contents =  file.file.read()
+        contents = contents.decode("utf-8")
+    except FileNotFoundError:
+             raise HTTPException(status_code=404, detail="File not found.")
+    except PermissionError:
+            raise HTTPException(status_code=401, detail="You do not have permission to access this file.")
+    except OSError as e:
+            raise HTTPException(status_code=500,detail=str(e))
+    except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="Error in decoding the text file contents.")
+
+    if len(contents)==0:
+        raise HTTPException(status_code=422, detail="The uploaded text file contains no data.")
     
-    contents =  file.file.read()
-    word_counts,total_words = clean_and_count_words(contents.decode("utf-8"))
+
+    word_counts,total_words = clean_and_count_words(contents)
 
     # Generate a unique file ID
     file_id = str(uuid4())
