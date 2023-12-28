@@ -18,11 +18,11 @@ This is a FastAPI application with SQLite database setup.
 
 2.   **build the applicaiton Repository**
      ```bash
-     docker build -t fastApi .
+     docker build -t fastapi .
 
 3.   **Run the application**
      ```bash
-     docker run -p 8000:80 fastApi
+     docker run -p 8000:80 fastapi
 
 ## About the Application
 
