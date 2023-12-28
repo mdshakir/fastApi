@@ -32,14 +32,14 @@ This is a FastAPI application with SQLite database setup.
 	```bash
 	Endpoint: POST /create_user
 
-Input:
+	Input:
 
 	JSON
 	{
   		"username": "your_username"
 	}
 
-Output:
+	Output:
 
 	JSON
 	{
@@ -54,14 +54,14 @@ This endpoints creates a new user and provides a jwt token which will be used fu
 2.	**File Upload**
 	```bash
 
-Endpoint: POST /upload_file
+	Endpoint: POST /upload_file
 
-Authorization: Requires a valid JWT token in the Authorization header.
+	Authorization: Requires a valid JWT token in the Authorization header.
 
-Input:
+	Input:
 
-Multipart form data containing a text file.
-Output:
+	Multipart form data containing a text file.
+	Output:
 
 	JSON
 	{
@@ -74,11 +74,11 @@ Output:
 3. 	**Get User Statistics**
 	```bash
 
-Endpoint: GET /get_user_stats
+	Endpoint: GET /get_user_stats
 
-Authorization: Requires a valid JWT token in the Authorization header.
+	Authorization: Requires a valid JWT token in the Authorization header.
 
-Output:
+	Output:
 
 	JSON
 	{
