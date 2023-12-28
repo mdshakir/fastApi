@@ -87,7 +87,7 @@ This endpoints creates a new user and provides a jwt token which will be used fu
 	}
 
 4.	**Get Word Count for a File**
-	```bash
+	
 
 	Endpoint: GET /get_count/{file_id}
 
