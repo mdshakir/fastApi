@@ -34,12 +34,12 @@ This is a FastAPI application with SQLite database setup.
 	
 	Input:
 
-	JSON
-	{
-  		"username": "your_username"
-	}
+		JSON
+		{
+  			"username": "your_username"
+		}
 
--	Output:
+	Output:
 	
 		JSON
 		{
