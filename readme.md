@@ -30,8 +30,8 @@ This is a FastAPI application with SQLite database setup.
 
 1.	**User Registration**
 	
--Endpoint: POST /create_user
-	```bash
+-	Endpoint: POST /create_user
+	
 	Input:
 
 	JSON
@@ -39,8 +39,8 @@ This is a FastAPI application with SQLite database setup.
   		"username": "your_username"
 	}
 
-	-Output:
-	```bash
+-	Output:
+	
 	JSON
 	{
   		"username": "your_username",
