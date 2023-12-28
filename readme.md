@@ -99,10 +99,10 @@ Output:
   	"word3": 2,  // ... and so on for each word and its count
 	}
 
-#Additional Information
-	Dependencies: FastAPI, uvicorn, python-multipart, JWT, SQLite, uuid, nltk
-	Database: SQLite (fileUpload.db)
-	Error Handling: HTTPException for various error scenarios
+## 	Additional Information
+-	Dependencies: FastAPI, uvicorn, python-multipart, JWT, SQLite, uuid, nltk
+-	Database: SQLite (fileUpload.db)
+-	Error Handling: HTTPException for various error scenarios
 
 
 
