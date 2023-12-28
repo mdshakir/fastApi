@@ -48,7 +48,7 @@ This is a FastAPI application with SQLite database setup.
   			"jwt": "JWT_token"
 		}
 
-This endpoints creates a new user and provides a jwt token which will be used further to access the rest of the endpoints. 
+This endpoints creates a new user and provides a jwt token which will be used further to access the rest of the endpoints. In this endpoint duplicate username is not allowed. 
 
 
 2.	**File Upload**
@@ -70,6 +70,8 @@ This endpoints creates a new user and provides a jwt token which will be used fu
   			"word3": 2,  // ... and so on for each word and its count
 		}
 
+In this endpoint only text files are allowed. This endpoint also checks if file is empty or corrupted.
+
 3. 	**Get User Statistics**
 
 -	Endpoint: GET /get_user_stats
@@ -83,6 +85,7 @@ This endpoints creates a new user and provides a jwt token which will be used fu
   			"total_files_uploaded": 5,
   			"total_words": 1000
 		}
+
 
 4.	**Get Word Count for a File**
 
@@ -98,6 +101,7 @@ This endpoints creates a new user and provides a jwt token which will be used fu
   		"word2": 5,
   		"word3": 2,  // ... and so on for each word and its count
 		}
+This endpoint validates the user and checks if the file belong to the user or not. Whether the file is present or not. 
 
 ## 	Additional Information
 -	Dependencies: FastAPI, uvicorn, python-multipart, JWT, SQLite, uuid, nltk
