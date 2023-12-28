@@ -52,7 +52,6 @@ This endpoints creates a new user and provides a jwt token which will be used fu
 
 
 2.	**File Upload**
-	```bash
 
 -	Endpoint: POST /upload_file
 
