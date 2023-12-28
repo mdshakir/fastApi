@@ -13,16 +13,16 @@ This is a FastAPI application with SQLite database setup.
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/your-fastapi-app.git
-   cd your-fastapi-app
+   git clone https://github.com/mdshakir/fastApi.git
+   cd fastApi
 
 2.   **build the applicaiton Repository**
      ```bash
-     docker build -t your-fastapi-app .
+     docker build -t fastApi .
 
 3.   **Run the application**
      ```bash
-     docker run -p 8000:80 your-fastapi-app
+     docker run -p 8000:80 fastApi
 
 ## About the Application
 
@@ -34,10 +34,10 @@ This is a FastAPI application with SQLite database setup.
 
 Input:
 
-JSON
-{
-  "username": "your_username"
-}
+	JSON
+	{
+  		"username": "your_username"
+	}
 
 Output:
 
