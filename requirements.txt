@@ -6,3 +6,5 @@ PyJWT==2.8.0
 PyJWT==2.8.0
 uvicorn==0.25.0
 black==22.3.0
+pytest==6.2.3
+
